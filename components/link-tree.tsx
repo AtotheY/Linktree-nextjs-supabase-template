@@ -7,6 +7,7 @@ import {
   Music,
   Gamepad,
   Youtube,
+  Cloud,
 } from "lucide-react";
 import Image from "next/image";
 
@@ -17,7 +18,6 @@ interface LinkItem {
   youtubeId?: string;
 }
 
-const profileImage = "/placeholder.svg?height=200&width=200";
 const name = "@anthonysistilli";
 const description = "Tech founder & senior software engineer";
 
@@ -92,44 +92,48 @@ export function LinkTree() {
               id="cloud-pattern"
               x="0"
               y="0"
-              width="750"
-              height="750"
+              width="100%"
+              height="100%"
               patternUnits="userSpaceOnUse"
-            >
-              <g transform="translate(0,0) scale(0.735)">
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M23.7058 199.23C40.9204 209.169 64.1443 204.487 86.6695 189.071C84.5809 216.286 92.1385 238.74 109.353 248.678C126.568 258.617 149.792 253.936 172.317 238.519C170.228 265.735 177.786 288.188 195 298.127C225.766 315.889 275.725 286.955 306.587 233.5C337.449 180.045 337.527 122.313 306.762 104.55C289.547 94.6113 266.323 99.2928 243.798 114.71C245.887 87.4938 238.329 65.0406 221.115 55.1017C203.9 45.1629 180.676 49.8444 158.151 65.2611C160.24 38.0454 152.682 15.5921 135.467 5.65331C104.702 -12.109 54.7432 16.8253 23.8811 70.28C-6.98103 123.735 -7.05949 181.468 23.7058 199.23Z"
-                  fill="none"
-                  stroke="#DC391B"
-                  strokeWidth="3"
-                />
-              </g>
-              <g transform="translate(500,500) scale(0.735) rotate(45)">
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M23.7058 199.23C40.9204 209.169 64.1443 204.487 86.6695 189.071C84.5809 216.286 92.1385 238.74 109.353 248.678C126.568 258.617 149.792 253.936 172.317 238.519C170.228 265.735 177.786 288.188 195 298.127C225.766 315.889 275.725 286.955 306.587 233.5C337.449 180.045 337.527 122.313 306.762 104.55C289.547 94.6113 266.323 99.2928 243.798 114.71C245.887 87.4938 238.329 65.0406 221.115 55.1017C203.9 45.1629 180.676 49.8444 158.151 65.2611C160.24 38.0454 152.682 15.5921 135.467 5.65331C104.702 -12.109 54.7432 16.8253 23.8811 70.28C-6.98103 123.735 -7.05949 181.468 23.7058 199.23Z"
-                  fill="none"
-                  stroke="#DC391B"
-                  strokeWidth="3"
-                />
-              </g>
-            </pattern>
+            />
           </defs>
           <rect width="100%" height="100%" fill="url(#cloud-pattern)" />
         </svg>
+        <div className="absolute inset-0 z-0 opacity-20">
+          {[
+            { top: "10%", left: "20%", rotate: "45deg" },
+            { top: "30%", left: "50%", rotate: "90deg" },
+            { top: "50%", left: "70%", rotate: "135deg" },
+            { top: "70%", left: "30%", rotate: "180deg" },
+            { top: "90%", left: "80%", rotate: "225deg" },
+            { top: "20%", left: "40%", rotate: "270deg" },
+            { top: "40%", left: "60%", rotate: "315deg" },
+            { top: "60%", left: "20%", rotate: "360deg" },
+            { top: "80%", left: "50%", rotate: "405deg" },
+            { top: "10%", left: "70%", rotate: "450deg" },
+          ].map((style, index) => (
+            <Cloud
+              key={index}
+              className="absolute"
+              style={{
+                top: style.top,
+                left: style.left,
+                transform: `rotate(${style.rotate})`,
+              }}
+              stroke="#DC391B"
+              strokeWidth={0.5}
+              size={250}
+            />
+          ))}
+        </div>
       </div>
 
       <div className="max-w-md mx-auto space-y-6 relative z-10">
         <div className="text-center">
           <Image
-            src={
-              process.env.NODE_ENV === "production"
-                ? `/AtotheY.github.io/${profileImage}`
-                : profileImage
-            }
+            src="/AtotheY.github.io/pfp.png"
+            width={200}
+            height={200}
             alt={name}
             className="w-24 h-24 rounded-full mx-auto mb-4 border-2 border-red-200 shadow-sm"
           />
