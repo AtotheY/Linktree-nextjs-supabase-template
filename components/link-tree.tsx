@@ -125,7 +125,11 @@ export default function Component() {
       <div className="max-w-md mx-auto space-y-6 relative z-10">
         <div className="text-center">
           <Image
-            src={profileImage}
+            src={
+              process.env.NODE_ENV === "production"
+                ? `/AtotheY.github.io${profileImage}`
+                : profileImage
+            }
             alt={name}
             className="w-24 h-24 rounded-full mx-auto mb-4 border-2 border-red-200 shadow-sm"
           />
