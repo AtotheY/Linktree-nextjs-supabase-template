@@ -61,7 +61,7 @@ const items: LinkItem[] = [
   },
 ];
 
-export default function Component() {
+export function LinkTree() {
   return (
     <div className="min-h-screen bg-red-50 py-8 px-4 relative overflow-hidden">
       {/* Progressive wave background */}
@@ -127,7 +127,7 @@ export default function Component() {
           <Image
             src={
               process.env.NODE_ENV === "production"
-                ? `/AtotheY.github.io${profileImage}`
+                ? `/AtotheY.github.io/${profileImage}`
                 : profileImage
             }
             alt={name}
