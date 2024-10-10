@@ -32,6 +32,7 @@ export default function Dashboard() {
       }
     };
     checkUser();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router]);
 
   const fetchAnalyticsData = async () => {
