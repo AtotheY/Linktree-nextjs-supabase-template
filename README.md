@@ -1,68 +1,69 @@
 # NextJS & Supabase Custom LinkTree
 
-<img src="https://i.imgur.com/lCwM28R.png" alt="Linktree Preview" width="400"/>
+A modern, customizable link-in-bio solution built with Next.js and Supabase.
 
-*Linktree Preview*
+[![Live Demo](https://img.shields.io/badge/demo-live-green?style=for-the-badge)](https://links.sistilli.dev/)
+[![GitHub Repo](https://img.shields.io/badge/github-repo-blue?style=for-the-badge)](https://github.com/AtotheY/Linktree-nextjs-supabase-template)
 
-<img src="https://i.imgur.com/JG8Orin.png" alt="Dashboard Preview" width="400"/>
+<p align="center">
+  <img src="https://i.imgur.com/lCwM28R.png" alt="Linktree Preview" width="300"/>
+  <img src="https://i.imgur.com/JG8Orin.png" alt="Dashboard Preview" width="300"/>
+</p>
 
-*Dashboard Preview*
+## 🚀 Features
 
-Welcome to my personal link site! This project serves as a centralized hub for all my links, resources, and interesting things. You can view the live site at [https://links.sistilli.dev/](https://links.sistilli.dev/). It's built with Next.js and is designed to be easily customizable for anyone who wants to create their own link site.
+- 🎨 Responsive design with a modern UI
+- 🔗 Easy to customize links and social media profiles
+- ⚡ Built with Next.js for fast performance
+- 📊 Analytics dashboard for tracking link clicks
+- 🌍 IP geolocation using ipapi
+- 🛡️ Optional Redis-based rate limiting
 
-Instagram WRONGFULLY blocked my Linktree, so I made my own.
-
-## 🚀 Tech Stack
+## 🛠️ Tech Stack
 
 - **Frontend**: Next.js, React, TypeScript
 - **Styling**: Tailwind CSS
 - **Backend**: Supabase (PostgreSQL)
 - **Authentication**: Supabase Auth
-- **Analytics**: Custom implementation with Supabase
 - **Deployment**: Vercel
 - **Rate Limiting**: Redis (optional)
-- **IP Geolocation**: ipapi
 
-## ✨ Features
+## 🚦 Quick Start
 
-- Responsive design with a modern UI
-- Easy to customize links and social media profiles
-- Built with Next.js for fast performance
-- Customizable metadata for SEO optimization
-- Progressive wave and cloud background patterns (honestly u should change it to something cooler tho for yourself)
-- IP geolocation using ipapi
-- Optional Redis-based rate limiting to prevent abuse
-- Analytics dashboard for tracking link clicks
+1. Fork and clone the repository
+2. Install dependencies: `npm install`
+3. Set up your Supabase project and environment variables
+4. Run the development server: `npm run dev`
 
-## 🚦 Getting Started
+For detailed setup instructions, see the [Getting Started](#-getting-started) section below.
 
-Follow these steps to set up and customize the link site for your own use.
+## 📖 Table of Contents
+
+- [Getting Started](#-getting-started)
+- [Customization](#customization)
+- [Accessing the Dashboard](#accessing-the-dashboard)
+- [Deployment](#deployment)
+- [Contributing](#-contributing)
+- [License](#-license)
+- [Contact](#-contact)
+
+## 🚀 Getting Started
 
 ### Prerequisites
 
-- Node.js and npm installed on your machine
-- A GitHub account to fork the repository
-- A Vercel account for deployment
+- Node.js and npm
+- GitHub account
+- Vercel account (for deployment)
 
 ### Installation
 
-1. **Fork the Repository**
-
-   Go to the [GitHub repository](https://github.com/AtotheY/your-repo-name) and click on the "Fork" button to create your own copy of the repository.
-
-2. **Clone the Repository**
-
-   Clone the forked repository to your local machine:
-
+1. Fork the [GitHub repository](https://github.com/AtotheY/Linktree-nextjs-supabase-template)
+2. Clone your forked repository:
    ```bash
-   git clone https://github.com/your-username/your-repo-name.git
-   cd your-repo-name
+   git clone https://github.com/your-username/Linktree-nextjs-supabase-template.git
+   cd Linktree-nextjs-supabase-template
    ```
-
-3. **Install Dependencies**
-
-   Install the necessary dependencies using npm:
-
+3. Install dependencies:
    ```bash
    npm install
    ```
@@ -227,20 +228,10 @@ Contributions, issues, and feature requests are welcome! Feel free to check the 
 
 This project is open source and available under the [MIT License](LICENSE).
 
-## 🙏 Acknowledgements
-
-- [Next.js](https://nextjs.org/)
-- [Supabase](https://supabase.io/)
-- [Vercel](https://vercel.com/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [ipapi](https://ipapi.co/)
-
-## 📬 Contact
+## ��� Contact
 
 Anthony Sistilli - [@SistilliAnthony](https://twitter.com/SistilliAnthony)
 
-Project Link: [https://github.com/AtotheY/your-repo-name](https://github.com/AtotheY/your-repo-name)
-
 ## ⭐️ Show your support
 
-Give a ⭐️ if this project helped you!
+If this project helped you, please consider giving it a ⭐️!
