@@ -34,13 +34,10 @@ export async function GET(request: Request) {
 
 // POST request to track events
 export async function POST(request: Request) {
-  const { event_type, link_id, source } = await request.json();
+  const { event_type, link_id, source, country, city, region, ip } =
+    await request.json();
   const supabase = createServersideClient();
 
-  const country = request.headers.get("CF-IPCountry") || null;
-  const city = request.headers.get("CF-IPCity") || null;
-  const region = request.headers.get("CF-IPRegion") || null;
-  const ip_address = request.headers.get("CF-Connecting-IP") || null;
   const user_agent = request.headers.get("User-Agent") || null;
 
   const { error } = await supabase.from("link_analytics").insert({
@@ -50,7 +47,7 @@ export async function POST(request: Request) {
     country,
     city,
     region,
-    ip_address,
+    ip_address: ip,
     user_agent,
   });
 

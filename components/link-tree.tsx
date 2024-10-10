@@ -33,6 +33,13 @@ export function LinkTree() {
         }
       }
 
+      // Get Cloudflare data from the custom header
+      const cfData = JSON.parse(
+        document
+          .querySelector('meta[name="cf-data"]')
+          ?.getAttribute("content") || "{}"
+      );
+
       try {
         const response = await fetch("/api", {
           method: "POST",
@@ -40,6 +47,7 @@ export function LinkTree() {
           body: JSON.stringify({
             event_type: "visit",
             source,
+            ...cfData,
           }),
         });
 
@@ -55,6 +63,12 @@ export function LinkTree() {
   }, []);
 
   const handleLinkClick = async (linkId: string) => {
+    // Get Cloudflare data from the custom header
+    const cfData = JSON.parse(
+      document.querySelector('meta[name="cf-data"]')?.getAttribute("content") ||
+        "{}"
+    );
+
     try {
       const response = await fetch("/api", {
         method: "POST",
@@ -62,6 +76,7 @@ export function LinkTree() {
         body: JSON.stringify({
           event_type: "click",
           link_id: linkId,
+          ...cfData,
         }),
       });
 
