@@ -28,7 +28,7 @@ export default function Dashboard() {
         setUser(user);
         fetchAnalyticsData();
       } else {
-        // router.push("/login");
+        router.push("/login");
       }
     };
     checkUser();
