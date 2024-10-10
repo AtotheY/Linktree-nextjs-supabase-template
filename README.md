@@ -45,6 +45,7 @@ For detailed setup instructions, see the [Getting Started](#-getting-started) se
 - [Deployment](#deployment)
 - [Contributing](#-contributing)
 - [License](#-license)
+- [Support](#-support)
 - [Contact](#-contact)
 
 ## 🚀 Getting Started
@@ -228,7 +229,15 @@ Contributions, issues, and feature requests are welcome! Feel free to check the 
 
 This project is open source and available under the [MIT License](LICENSE).
 
-## ��� Contact
+## 💖 Support
+
+If you find this project helpful and want to support its development, you can buy me a coffee:
+
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-support-yellow?style=for-the-badge&logo=buy-me-a-coffee)](http://buymeacoffee.com/anthonysistilli)
+
+Your support is greatly appreciated and helps keep this project going!
+
+## 📬 Contact
 
 Anthony Sistilli - [@SistilliAnthony](https://twitter.com/SistilliAnthony)
 
