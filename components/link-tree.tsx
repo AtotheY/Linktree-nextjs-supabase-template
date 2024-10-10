@@ -26,6 +26,7 @@ interface GeoInfo {
 
 export function LinkTree() {
   const [geoInfo, setGeoInfo] = useState<GeoInfo | null>(null);
+  const [visitId, setVisitId] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchGeoInfo = async () => {
@@ -44,7 +45,7 @@ export function LinkTree() {
     };
 
     fetchGeoInfo();
-  }, []);
+  }, [visitId]);
 
   useEffect(() => {
     const trackVisit = async () => {
@@ -76,6 +77,9 @@ export function LinkTree() {
           if (!response.ok) {
             throw new Error("Failed to track visit");
           }
+
+          const data = await response.json();
+          setVisitId(data.id); // Store the visit ID
         } catch (error) {
           console.error("Error tracking visit:", error);
         }
@@ -88,24 +92,24 @@ export function LinkTree() {
   }, [geoInfo]);
 
   const handleLinkClick = async (linkId: string) => {
-    if (geoInfo) {
-      try {
-        const response = await fetch("/api/analytics", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            event_type: "click",
-            link_id: linkId,
-            ...geoInfo,
-          }),
-        });
+    try {
+      const payload = {
+        event_type: "click",
+        link_id: linkId,
+        ...(geoInfo || {}),
+      };
 
-        if (!response.ok) {
-          throw new Error("Failed to track click");
-        }
-      } catch (error) {
-        console.error("Error tracking click:", error);
+      const response = await fetch("/api/analytics", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to track click");
       }
+    } catch (error) {
+      console.error("Error tracking click:", error);
     }
   };
 

@@ -7,7 +7,12 @@ CREATE OR REPLACE FUNCTION get_analytics(start_date date, end_date date)
 RETURNS JSON AS $$
 DECLARE
     result JSON;
+    last_week_start date;
+    last_week_end date;
 BEGIN
+    last_week_start := start_date - INTERVAL '7 days';
+    last_week_end := end_date - INTERVAL '7 days';
+
     WITH visits AS (
         SELECT COUNT(*) as total_visits
         FROM link_analytics
@@ -51,13 +56,21 @@ BEGIN
     ),
     views_over_time AS (
         SELECT created_at::date as date, 
-               COUNT(*) FILTER (WHERE event_type = 'visit') as total_visits,
-               COUNT(*) FILTER (WHERE event_type = 'click') as total_clicks
+               COUNT(*) as total_visits,
+               SUM(CASE WHEN event_type = 'click' THEN 1 ELSE 0 END) as total_clicks
         FROM link_analytics
         WHERE created_at >= start_date
           AND created_at < (end_date + INTERVAL '1 day')
         GROUP BY date
         ORDER BY date ASC
+    ),
+    last_week_stats AS (
+        SELECT 
+            COUNT(*) FILTER (WHERE event_type = 'visit') as last_week_visits,
+            COUNT(*) FILTER (WHERE event_type = 'click') as last_week_clicks
+        FROM link_analytics
+        WHERE created_at >= last_week_start
+          AND created_at < (last_week_end + INTERVAL '1 day')
     )
     SELECT json_build_object(
         'date_range', json_build_object('start_date', start_date, 'end_date', end_date),
@@ -66,7 +79,8 @@ BEGIN
         'clicks_by_link', COALESCE((SELECT json_agg(row_to_json(clicks_by_link)) FROM clicks_by_link), '[]'::json),
         'views_by_country', COALESCE((SELECT json_agg(row_to_json(views_by_country)) FROM views_by_country), '[]'::json),
         'views_by_referrer', COALESCE((SELECT json_agg(row_to_json(views_by_referrer)) FROM views_by_referrer), '[]'::json),
-        'views_over_time', COALESCE((SELECT json_agg(row_to_json(views_over_time)) FROM views_over_time), '[]'::json)
+        'views_over_time', COALESCE((SELECT json_agg(row_to_json(views_over_time)) FROM views_over_time), '[]'::json),
+        'last_week_stats', (SELECT row_to_json(last_week_stats) FROM last_week_stats)
     ) INTO result;
 
     RETURN result;

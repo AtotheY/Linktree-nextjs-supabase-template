@@ -33,8 +33,9 @@ export async function GET(request: Request) {
   return NextResponse.json(data);
 }
 
-// POST request to track events
+// POST request to handle both tracking events and updating time spent
 export async function POST(request: Request) {
+  // If it's a regular POST request (for tracking events)
   const ip =
     request.headers.get("x-forwarded-for")?.split(",")[0] || "127.0.0.1";
 
@@ -59,16 +60,19 @@ export async function POST(request: Request) {
     const supabase = createServersideClient();
     const user_agent = request.headers.get("User-Agent") || null;
 
-    const { error } = await supabase.from("link_analytics").insert({
-      event_type,
-      link_id,
-      source,
-      country,
-      city,
-      region,
-      ip_address: ip,
-      user_agent,
-    });
+    const { data, error } = await supabase
+      .from("link_analytics")
+      .insert({
+        event_type,
+        link_id,
+        source,
+        country,
+        city,
+        region,
+        ip_address: ip,
+        user_agent,
+      })
+      .select();
 
     if (error) {
       console.error("Error tracking event:", error);
@@ -78,7 +82,7 @@ export async function POST(request: Request) {
       );
     }
 
-    return NextResponse.json({ success: true });
+    return NextResponse.json({ success: true, id: data[0].id });
   } catch (error) {
     console.error("Unexpected error:", error);
     return NextResponse.json(
