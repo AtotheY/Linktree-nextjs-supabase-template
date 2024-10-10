@@ -7,7 +7,7 @@ A modern, customizable link-in-bio solution built with Next.js and Supabase.
 
 <p align="center">
   <img src="https://i.imgur.com/lCwM28R.png" alt="Linktree Preview" width="300"/>
-  <img src="https://i.imgur.com/JG8Orin.png" alt="Dashboard Preview" width="350"/>
+  <img src="https://i.imgur.com/JG8Orin.png" alt="Dashboard Preview" width="450"/>
 </p>
 
 ## 🚀 Features
