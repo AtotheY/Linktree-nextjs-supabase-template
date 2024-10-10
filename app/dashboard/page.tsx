@@ -118,7 +118,8 @@ export default function Dashboard() {
 
   return (
     <div className="container mx-auto p-4 bg-gray-100 text-gray-800">
-      <h1 className="text-3xl font-bold mb-6">Linktree Analytics</h1>
+      <h1 className="text-3xl font-bold">Linktree Dashboard</h1>
+      <h5 className="mb-6">links.sistilli.dev</h5>
       <div className="mb-6">
         <DateRangeSelector
           startDate={dateRange.start}
