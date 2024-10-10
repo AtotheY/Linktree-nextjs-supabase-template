@@ -63,7 +63,7 @@ export function LinkTree() {
 
       if (geoInfo) {
         try {
-          const response = await fetch("/api", {
+          const response = await fetch("/api/analytics", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -90,7 +90,7 @@ export function LinkTree() {
   const handleLinkClick = async (linkId: string) => {
     if (geoInfo) {
       try {
-        const response = await fetch("/api", {
+        const response = await fetch("/api/analytics", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
