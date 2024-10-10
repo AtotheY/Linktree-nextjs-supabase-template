@@ -153,7 +153,7 @@ To set up and access the dashboard for analytics, follow these steps:
      2. Only authenticated users (you) can read from the table (for viewing analytics).
      - Note: they have pre-made policies you can choose from in the Supabase dashboard's under Authentication > Policies > click on table [create policy]
 
-Once you've completed these steps, you should be able to access the dashboard by logging in with the email user you created in Supabase. The dashboard will display analytics for your link site.
+Once you've completed these steps, you should be able to access the dashboard at `/dashboard` after logging into `/login` by logging in with the email user you created in Supabase. The dashboard will display analytics for your link site.
 
 ### Deployment
 
