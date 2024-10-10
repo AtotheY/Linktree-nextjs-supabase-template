@@ -106,6 +106,8 @@ For detailed setup instructions, see the [Getting Started](#-getting-started) se
    ];
    ```
 
+   To create a category, simply make the type "category" and only include a title.
+
 3. **Add Your Profile Image**
 
    Replace the `pfp.png` file in the `public` directory with your own profile image. Ensure the image is named `pfp.png` to match the existing code.
