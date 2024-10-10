@@ -1,5 +1,6 @@
 import { createServersideClient } from "@/utils/supabase/server";
 import { NextResponse } from "next/server";
+import { rateLimit } from "@/utils/rateLimit";
 
 // GET request to retrieve analytics data
 export async function GET(request: Request) {
@@ -34,45 +35,55 @@ export async function GET(request: Request) {
 
 // POST request to track events
 export async function POST(request: Request) {
-  const {
-    event_type,
-    link_id,
-    source,
-    country,
-    city,
-    region,
-    ip: passedInIP,
-  } = await request.json();
-  const supabase = createServersideClient();
-
-  // The x-forwarded-for header will contain the user's IP address, not the frontend server's IP
-  // It's set by the proxy or load balancer in front of your Next.js app
   const ip =
-    request.headers.get("x-forwarded-for")?.split(",")[0] ||
-    passedInIP ||
-    "127.0.0.1";
+    request.headers.get("x-forwarded-for")?.split(",")[0] || "127.0.0.1";
 
-  console.log({ ip });
-  const user_agent = request.headers.get("User-Agent") || null;
+  try {
+    // Check if rate limiting should be skipped
+    const skipRateLimit = process.env.SKIP_RATE_LIMIT === "true";
 
-  const { error } = await supabase.from("link_analytics").insert({
-    event_type,
-    link_id,
-    source,
-    country,
-    city,
-    region,
-    ip_address: ip,
-    user_agent,
-  });
+    // Rate limiting (only if not skipped)
+    if (!skipRateLimit) {
+      const isRateLimited = await rateLimit(ip);
+      if (isRateLimited) {
+        return NextResponse.json(
+          { error: "Too many requests" },
+          { status: 429 }
+        );
+      }
+    }
 
-  if (error) {
-    console.error("Error tracking event:", error);
+    const { event_type, link_id, source, country, city, region } =
+      await request.json();
+
+    const supabase = createServersideClient();
+    const user_agent = request.headers.get("User-Agent") || null;
+
+    const { error } = await supabase.from("link_analytics").insert({
+      event_type,
+      link_id,
+      source,
+      country,
+      city,
+      region,
+      ip_address: ip,
+      user_agent,
+    });
+
+    if (error) {
+      console.error("Error tracking event:", error);
+      return NextResponse.json(
+        { error: "Failed to track event" },
+        { status: 500 }
+      );
+    }
+
+    return NextResponse.json({ success: true });
+  } catch (error) {
+    console.error("Unexpected error:", error);
     return NextResponse.json(
-      { error: "Failed to track event" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
-
-  return NextResponse.json({ success: true });
 }

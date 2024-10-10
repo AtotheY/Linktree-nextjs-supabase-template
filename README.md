@@ -11,6 +11,8 @@ Instagram WRONGFULLY blocked my Linktree, so I made my own.
 - Built with Next.js for fast performance
 - Customizable metadata for SEO optimization
 - Progressive wave and cloud background patterns (honestly u should change it to something cooler tho for yourself)
+- IP geolocation using ipapi
+- Optional Redis-based rate limiting to prevent abuse
 
 ## Getting Started
 
@@ -20,6 +22,7 @@ Follow these steps to set up and customize the link site for your own use.
 
 - Node.js and npm installed on your machine
 - A GitHub account to fork the repository
+- A Vercel account for deployment
 
 ### Installation
 
@@ -85,6 +88,20 @@ Follow these steps to set up and customize the link site for your own use.
 
    Replace the `pfp.png` file in the `public` directory with your own profile image. Ensure the image is named `pfp.png` to match the existing code.
 
+### IP Geolocation with ipapi
+
+This project uses ipapi to gather geolocation data for analytics purposes. The `checkIPReputation.ts` file contains the logic for making requests to the ipapi service. Make sure to set up your ipapi API key in the environment variables.
+
+### Redis-based Rate Limiting (Optional)
+
+To prevent abuse and limit requests from potential bad actors, this project includes an optional Redis-based rate limiting system. To enable it:
+
+1. Set up a Redis instance (you can use services like Upstash for serverless Redis).
+2. Add your Redis connection details to the environment variables.
+3. Ensure the `SKIP_RATE_LIMIT` environment variable is set to `false`.
+
+You can adjust the rate limiting parameters in the `rateLimit.ts` file to suit your needs.
+
 ### Running the Project
 
 To start the development server, run:
@@ -92,35 +109,66 @@ To start the development server, run:
 
 ### Deployment
 
-To deploy your link site using GitHub Pages, follow these steps:
+This project is set up for easy deployment on Vercel. To deploy your link site:
 
-1. **Enable GitHub Pages**
+1. **Push Your Changes**
+   
+   Ensure all your changes are committed and pushed to your GitHub repository.
 
-   - Go to your GitHub repository's settings.
-   - Navigate to the "Pages" section.
-   - Under "Source", select "GitHub Actions" as the deployment method.
+2. **Connect to Vercel**
+   
+   - Go to [Vercel](https://vercel.com/) and sign in or create an account.
+   - Click on "Add New..." and select "Project" from the dropdown.
+   - Choose "Import Git Repository" and select your GitHub repository.
 
-2. **Configure GitHub Actions**
+3. **Configure Project**
+   
+   - Vercel will automatically detect that it's a Next.js project.
+   - Configure your project name and framework preset (should be auto-detected as Next.js).
 
-   The repository is already set up with the necessary GitHub Actions workflow in `.github/workflows/deploy.yml`. This workflow will automatically build and deploy your site whenever you push changes to the `main` branch.
+4. **Environment Variables**
+   
+   - In the Vercel deployment interface, go to the "Environment Variables" section.
+   - Add the following environment variables from your `.env.local` file:
+     - `NEXT_PUBLIC_SUPABASE_URL`: Your Supabase project URL
+     - `NEXT_PUBLIC_SUPABASE_ANON_KEY`: Your Supabase anonymous key
 
-3. **Custom Domain (Optional)**
+   - You may need to add additional variables depending on your configuration:
+     - `REDIS_TOKEN`: Your Redis connection token (if using rate limiting)
+     - `SKIP_RATE_LIMIT`: Set to "true" if not using Redis
+     - `IPAPI_API_KEY`: If you're using the ipapi service for IP geolocation (1000 free requests without an api key)
 
-   If you want to use a custom domain:
-   - In the "Pages" section of your repository settings, enter your custom domain in the "Custom domain" field.
-   - Update your DNS settings to point to GitHub Pages. Refer to [GitHub's documentation](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site) for detailed instructions.
+   Basic example with rate limiting:
+   ```
+   NEXT_PUBLIC_SUPABASE_URL=https://your-project-url.supabase.co
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-key
+   REDIS_TOKEN=your-redis-token
+   ```
 
-4. **Automatic Deployment**
+   Basic example without:
+   ```
+   NEXT_PUBLIC_SUPABASE_URL=https://your-project-url.supabase.co
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-key
+   SKIP_RATE_LIMIT=true
+   ```
 
-   With GitHub Actions and Pages set up, your site will automatically deploy on every push to the `main` branch. The deployment process typically takes a few minutes.
+   Note: Never commit your `.env.local` file to version control. The values provided here are just examples.
 
-5. **Access Your Site**
+5. **Deploy**
+   
+   - Click "Deploy" and wait for Vercel to build and deploy your project.
+   - Vercel will provide you with a deployment URL once it's complete.
 
-   Once deployed, your link site will be accessible at:
-   - `https://your-username.github.io/your-repo-name` (if using GitHub's default domain)
-   - Your custom domain (if configured)
+6. **Custom Domain (Optional)**
+   
+   - In your Vercel project dashboard, go to "Settings" > "Domains".
+   - Add your custom domain and follow Vercel's instructions to configure your DNS settings.
 
-Note: The `next.config.mjs` file has already been configured to work with GitHub Pages, so you don't need to make any additional changes for deployment to work correctly.
+7. **Automatic Deployments**
+   
+   - Vercel automatically sets up a GitHub integration.
+   - Any future pushes to your main branch will trigger automatic deployments.
 
+With Vercel, you get automatic HTTPS, continuous deployment, and excellent performance out of the box. Your link site will be live and accessible via the Vercel-provided URL or your custom domain if configured.
 
-Now, every time you push changes to your main branch, GitHub Actions will automatically build and deploy your site to GitHub Pages. Your link site will be accessible at `https://your-username.github.io/your-repo-name`.
+This is all designed to run within the free tier of Vercel and Upstash for small-scale personal use. If you expect high traffic or need more advanced features, consider upgrading your Vercel plan or using additional services.
