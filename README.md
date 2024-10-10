@@ -1,5 +1,11 @@
 # Anthony Sistilli's Link Site
 
+![Linktree Preview](https://i.imgur.com/lCwM28R.png)
+*Linktree Preview*
+
+![Dashboard Preview](https://i.imgur.com/JG8Orin.png)
+*Dashboard Preview*
+
 Welcome to my personal link site! This project serves as a centralized hub for all my links, resources, and interesting things. You can view the live site at [https://links.sistilli.dev/](https://links.sistilli.dev/). It's built with Next.js and is designed to be easily customizable for anyone who wants to create their own link site.
 
 Instagram WRONGFULLY blocked my Linktree, so I made my own.
@@ -104,8 +110,34 @@ You can adjust the rate limiting parameters in the `rateLimit.ts` file to suit y
 
 ### Running the Project
 
-To start the development server, run:
+To start the development server, run: `npm run dev`
 
+## Accessing the Dashboard
+
+To set up and access the dashboard for analytics, follow these steps:
+
+1. **Create a new email user in Supabase**
+   - Make sure email is enabled as a provider in your Supabase project settings.
+   - Here's how the authentication settings should look:
+     ![Supabase Auth Settings](https://i.imgur.com/iTjvNqw.png)
+
+2. **Set up Supabase environment variables**
+   - Ensure that your Supabase environment variables are correctly set up in your `.env.local` file and in your deployment environment.
+
+3. **Run SQL commands for analytics**
+   - In the `utils/sql` folder, you'll find two SQL files: `rpc.sql` and `table.sql`.
+   - Run both SQL commands in your Supabase SQL editor:
+     - `rpc.sql` creates the RPC function for analytics.
+     - `table.sql` creates the necessary table in the database.
+
+4. **Enable Row Level Security (RLS) on the table**
+   - After creating the table, enable RLS on it.
+   - Set up RLS policies to ensure:
+     1. All users can update the table (for recording link clicks).
+     2. Only authenticated users (you) can read from the table (for viewing analytics).
+     - Note: they have pre-made policies you can choose from in the Supabase dashboard's under Authentication > Policies > click on table [create policy]
+
+Once you've completed these steps, you should be able to access the dashboard by logging in with the email user you created in Supabase. The dashboard will display analytics for your link site.
 
 ### Deployment
 
@@ -172,3 +204,4 @@ This project is set up for easy deployment on Vercel. To deploy your link site:
 With Vercel, you get automatic HTTPS, continuous deployment, and excellent performance out of the box. Your link site will be live and accessible via the Vercel-provided URL or your custom domain if configured.
 
 This is all designed to run within the free tier of Vercel and Upstash for small-scale personal use. If you expect high traffic or need more advanced features, consider upgrading your Vercel plan or using additional services.
+
