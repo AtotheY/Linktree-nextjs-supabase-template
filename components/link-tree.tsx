@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useEffect } from "react";
 import {
   Linkedin,
   Twitter,
@@ -15,8 +16,17 @@ import {
   name,
   socialLinks,
 } from "@/constants/links";
+import { trackEvent } from "@/utils/analytics";
 
 export function LinkTree() {
+  useEffect(() => {
+    trackEvent({ event_type: "visit" });
+  }, []);
+
+  const handleLinkClick = (linkId: string) => {
+    trackEvent({ event_type: "click", link_id: linkId });
+  };
+
   return (
     <div className="min-h-screen bg-red-50 py-8 px-4 relative overflow-hidden">
       {/* Progressive wave background */}
@@ -128,6 +138,7 @@ export function LinkTree() {
                   style={{
                     boxShadow: "0 0 5px rgba(255, 0, 0, 0.2)",
                   }}
+                  onClick={() => handleLinkClick(item.url ?? "undefined link")}
                 >
                   <span className="text-gray-800 font-medium">
                     {item.title}
@@ -143,12 +154,13 @@ export function LinkTree() {
                     <iframe
                       width="100%"
                       height="100%"
-                      src={`https://www.youtube.com/embed/${item.youtubeId}`}
+                      src={`https://www.youtube.com/embed/${item.url}`}
                       title={item.title}
                       frameBorder="0"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen
-                    ></iframe>
+                      onClick={() => handleLinkClick(item.title)}
+                    />
                   </div>
                 </div>
               )}
