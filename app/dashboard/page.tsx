@@ -27,6 +27,8 @@ import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import { Progress } from "@/components/ui/progress";
 import { getCountryFlag } from "@/utils/countryUtils";
+import { DateRangeSelector } from "@/components/date-range-selector";
+import { subDays } from "date-fns";
 
 interface AnalyticsData {
   date_range: { start_date: string; end_date: string };
@@ -51,11 +53,14 @@ export default function Dashboard() {
   const [analyticsData, setAnalyticsData] = useState<AnalyticsData | null>(
     null
   );
-  const [startDate, setStartDate] = useState<string>(getDefaultStartDate());
-  const [endDate, setEndDate] = useState<string>(getDefaultEndDate());
+
   const [showVisits, setShowVisits] = useState(true);
   const router = useRouter();
   const supabase = createClient();
+  const [dateRange, setDateRange] = useState({
+    start: subDays(new Date(), 6),
+    end: new Date(),
+  });
 
   useEffect(() => {
     const checkUser = async () => {
@@ -64,18 +69,18 @@ export default function Dashboard() {
       } = await supabase.auth.getUser();
       if (user) {
         setUser(user);
-        fetchAnalyticsData();
+        fetchAnalyticsData(dateRange.start, dateRange.end);
       } else {
         router.push("/login");
       }
     };
     checkUser();
-  }, [router, supabase.auth]);
+  }, [router, supabase.auth, dateRange]);
 
-  const fetchAnalyticsData = async () => {
+  const fetchAnalyticsData = async (start: Date, end: Date) => {
     try {
       const response = await fetch(
-        `/api/analytics?startDate=${startDate}&endDate=${endDate}`
+        `/api/analytics?startDate=${start.toISOString()}&endDate=${end.toISOString()}`
       );
       if (!response.ok) {
         throw new Error("Failed to fetch analytics data");
@@ -88,8 +93,8 @@ export default function Dashboard() {
     }
   };
 
-  const handleDateChange = () => {
-    fetchAnalyticsData();
+  const handleDateChange = (start: Date, end: Date) => {
+    setDateRange({ start, end });
   };
 
   if (!user || !analyticsData) {
@@ -115,24 +120,11 @@ export default function Dashboard() {
     <div className="container mx-auto p-4 bg-gray-100 text-gray-800">
       <h1 className="text-3xl font-bold mb-6">Linktree Analytics</h1>
       <div className="mb-6">
-        <input
-          type="date"
-          value={startDate}
-          onChange={(e) => setStartDate(e.target.value)}
-          className="mr-2 p-2 border rounded"
+        <DateRangeSelector
+          startDate={dateRange.start}
+          endDate={dateRange.end}
+          onDateChange={handleDateChange}
         />
-        <input
-          type="date"
-          value={endDate}
-          onChange={(e) => setEndDate(e.target.value)}
-          className="mr-2 p-2 border rounded"
-        />
-        <button
-          onClick={handleDateChange}
-          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors"
-        >
-          Update
-        </button>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <Card className="bg-white shadow-lg">
@@ -345,14 +337,4 @@ export default function Dashboard() {
       </div>
     </div>
   );
-}
-
-function getDefaultStartDate(): string {
-  const date = new Date();
-  date.setDate(date.getDate() - 27); // Default to 28 days ago (including today)
-  return date.toISOString().split("T")[0];
-}
-
-function getDefaultEndDate(): string {
-  return new Date().toISOString().split("T")[0];
 }
