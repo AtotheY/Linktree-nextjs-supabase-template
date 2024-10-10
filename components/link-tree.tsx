@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Linkedin,
   Twitter,
@@ -17,7 +17,35 @@ import {
   socialLinks,
 } from "@/constants/links";
 
+interface GeoInfo {
+  country: string;
+  city: string;
+  region: string;
+  ip: string;
+}
+
 export function LinkTree() {
+  const [geoInfo, setGeoInfo] = useState<GeoInfo | null>(null);
+
+  useEffect(() => {
+    const fetchGeoInfo = async () => {
+      try {
+        const response = await fetch("https://ipapi.co/json/");
+        const data = await response.json();
+        setGeoInfo({
+          country: data.country_name,
+          city: data.city,
+          region: data.region,
+          ip: data.ip,
+        });
+      } catch (error) {
+        console.error("Error fetching geo info:", error);
+      }
+    };
+
+    fetchGeoInfo();
+  }, []);
+
   useEffect(() => {
     const trackVisit = async () => {
       const referrer = document.referrer;
@@ -33,58 +61,51 @@ export function LinkTree() {
         }
       }
 
-      // Get Cloudflare data from the custom header
-      const cfData = JSON.parse(
-        document
-          .querySelector('meta[name="cf-data"]')
-          ?.getAttribute("content") || "{}"
-      );
+      if (geoInfo) {
+        try {
+          const response = await fetch("/api", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              event_type: "visit",
+              source,
+              ...geoInfo,
+            }),
+          });
 
+          if (!response.ok) {
+            throw new Error("Failed to track visit");
+          }
+        } catch (error) {
+          console.error("Error tracking visit:", error);
+        }
+      }
+    };
+
+    if (geoInfo) {
+      trackVisit();
+    }
+  }, [geoInfo]);
+
+  const handleLinkClick = async (linkId: string) => {
+    if (geoInfo) {
       try {
         const response = await fetch("/api", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            event_type: "visit",
-            source,
-            ...cfData,
+            event_type: "click",
+            link_id: linkId,
+            ...geoInfo,
           }),
         });
 
         if (!response.ok) {
-          throw new Error("Failed to track visit");
+          throw new Error("Failed to track click");
         }
       } catch (error) {
-        console.error("Error tracking visit:", error);
+        console.error("Error tracking click:", error);
       }
-    };
-
-    trackVisit();
-  }, []);
-
-  const handleLinkClick = async (linkId: string) => {
-    // Get Cloudflare data from the custom header
-    const cfData = JSON.parse(
-      document.querySelector('meta[name="cf-data"]')?.getAttribute("content") ||
-        "{}"
-    );
-
-    try {
-      const response = await fetch("/api", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          event_type: "click",
-          link_id: linkId,
-          ...cfData,
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to track click");
-      }
-    } catch (error) {
-      console.error("Error tracking click:", error);
     }
   };
 
