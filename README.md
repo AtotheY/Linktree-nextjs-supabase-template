@@ -1,16 +1,29 @@
-# Anthony Sistilli's Link Site
+# NextJS & Supabase Custom LinkTree
 
-![Linktree Preview](https://i.imgur.com/lCwM28R.png)
+<img src="https://i.imgur.com/lCwM28R.png" alt="Linktree Preview" width="400"/>
+
 *Linktree Preview*
 
-![Dashboard Preview](https://i.imgur.com/JG8Orin.png)
+<img src="https://i.imgur.com/JG8Orin.png" alt="Dashboard Preview" width="400"/>
+
 *Dashboard Preview*
 
 Welcome to my personal link site! This project serves as a centralized hub for all my links, resources, and interesting things. You can view the live site at [https://links.sistilli.dev/](https://links.sistilli.dev/). It's built with Next.js and is designed to be easily customizable for anyone who wants to create their own link site.
 
 Instagram WRONGFULLY blocked my Linktree, so I made my own.
 
-## Features
+## 🚀 Tech Stack
+
+- **Frontend**: Next.js, React, TypeScript
+- **Styling**: Tailwind CSS
+- **Backend**: Supabase (PostgreSQL)
+- **Authentication**: Supabase Auth
+- **Analytics**: Custom implementation with Supabase
+- **Deployment**: Vercel
+- **Rate Limiting**: Redis (optional)
+- **IP Geolocation**: ipapi
+
+## ✨ Features
 
 - Responsive design with a modern UI
 - Easy to customize links and social media profiles
@@ -19,8 +32,9 @@ Instagram WRONGFULLY blocked my Linktree, so I made my own.
 - Progressive wave and cloud background patterns (honestly u should change it to something cooler tho for yourself)
 - IP geolocation using ipapi
 - Optional Redis-based rate limiting to prevent abuse
+- Analytics dashboard for tracking link clicks
 
-## Getting Started
+## 🚦 Getting Started
 
 Follow these steps to set up and customize the link site for your own use.
 
@@ -205,3 +219,28 @@ With Vercel, you get automatic HTTPS, continuous deployment, and excellent perfo
 
 This is all designed to run within the free tier of Vercel and Upstash for small-scale personal use. If you expect high traffic or need more advanced features, consider upgrading your Vercel plan or using additional services.
 
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/AtotheY/your-repo-name/issues) if you want to contribute.
+
+## 📝 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+## 🙏 Acknowledgements
+
+- [Next.js](https://nextjs.org/)
+- [Supabase](https://supabase.io/)
+- [Vercel](https://vercel.com/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [ipapi](https://ipapi.co/)
+
+## 📬 Contact
+
+Anthony Sistilli - [@SistilliAnthony](https://twitter.com/SistilliAnthony)
+
+Project Link: [https://github.com/AtotheY/your-repo-name](https://github.com/AtotheY/your-repo-name)
+
+## ⭐️ Show your support
+
+Give a ⭐️ if this project helped you!
