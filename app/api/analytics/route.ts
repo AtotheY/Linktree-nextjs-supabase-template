@@ -1,6 +1,7 @@
 import { createServersideClient } from "@/utils/supabase/server";
 import { NextResponse } from "next/server";
 import { rateLimit } from "@/utils/rateLimit";
+import { headers } from "next/headers";
 
 // GET request to retrieve analytics data
 export async function GET(request: Request) {
@@ -35,9 +36,11 @@ export async function GET(request: Request) {
 
 // POST request to handle both tracking events and updating time spent
 export async function POST(request: Request) {
-  // If it's a regular POST request (for tracking events)
-  const ip =
-    request.headers.get("x-forwarded-for")?.split(",")[0] || "127.0.0.1";
+  const headersList = headers();
+  const ip = headersList.get("x-forwarded-for")?.split(",")[0] || "127.0.0.1";
+  const country = headersList.get("x-vercel-ip-country") || null;
+  const city = headersList.get("x-vercel-ip-city") || null;
+  const region = headersList.get("x-vercel-ip-country-region") || null;
 
   try {
     // Check if rate limiting should be skipped
@@ -54,8 +57,7 @@ export async function POST(request: Request) {
       }
     }
 
-    const { event_type, link_id, source, country, city, region } =
-      await request.json();
+    const { event_type, link_id, source } = await request.json();
 
     const supabase = createServersideClient();
     const user_agent = request.headers.get("User-Agent") || null;

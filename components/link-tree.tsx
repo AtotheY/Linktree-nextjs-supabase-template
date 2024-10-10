@@ -21,7 +21,6 @@ interface GeoInfo {
   country: string;
   city: string;
   region: string;
-  ip: string;
 }
 
 export function LinkTree() {
@@ -31,13 +30,12 @@ export function LinkTree() {
   useEffect(() => {
     const fetchGeoInfo = async () => {
       try {
-        const response = await fetch("https://ipapi.co/json/");
+        const response = await fetch("/api/geolocation");
         const data = await response.json();
         setGeoInfo({
-          country: data.country_name,
+          country: data.country,
           city: data.city,
           region: data.region,
-          ip: data.ip,
         });
       } catch (error) {
         console.error("Error fetching geo info:", error);
