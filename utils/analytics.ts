@@ -3,6 +3,7 @@ import { createClient } from "./supabase/client";
 interface AnalyticsEvent {
   event_type: "visit" | "click";
   link_id?: string;
+  source?: string; // Add this line
 }
 
 export async function trackEvent(event: AnalyticsEvent) {
@@ -17,6 +18,7 @@ export async function trackEvent(event: AnalyticsEvent) {
     const { error } = await supabase.from("link_analytics").insert({
       event_type: event.event_type,
       link_id: event.link_id,
+      source: event.source,
       country: geoData.country_name,
       city: geoData.city,
       region: geoData.region,

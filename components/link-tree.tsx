@@ -20,7 +20,20 @@ import { trackEvent } from "@/utils/analytics";
 
 export function LinkTree() {
   useEffect(() => {
-    trackEvent({ event_type: "visit" });
+    const referrer = document.referrer;
+    let source = "direct";
+
+    if (referrer) {
+      try {
+        const url = new URL(referrer);
+        source = url.hostname;
+      } catch (error) {
+        console.error("Invalid referrer URL:", error);
+        source = referrer; // Use the raw referrer if URL parsing fails
+      }
+    }
+
+    trackEvent({ event_type: "visit", source });
   }, []);
 
   const handleLinkClick = (linkId: string) => {
