@@ -5,7 +5,7 @@ import { getCountryFlag } from "@/utils/countryUtils";
 interface Action {
   event_type: string;
   link_id: string;
-  country: string;
+  country: string | null;
   created_at: string;
 }
 
@@ -40,40 +40,31 @@ export default function LiveFeed({ showVisits }: LiveFeedProps) {
     ? actions
     : actions.filter((action) => action.event_type !== "visit");
 
+  const formatAction = (action: Action) => {
+    const time = new Date(action.created_at).toLocaleTimeString();
+    const eventType = action.event_type === "visit" ? "visitor" : "click";
+    const linkInfo =
+      action.event_type === "click" && action.link_id
+        ? `on ${new URL(action.link_id).hostname}`
+        : "";
+
+    const flag = getCountryFlag(action.country || "");
+    const locationInfo = action.country
+      ? `from ${action.country} ${flag}`
+      : flag;
+
+    return `[${time}] ${eventType} ${locationInfo} ${linkInfo}`.trim();
+  };
+
   return (
-    <ScrollArea className="h-[120px]">
-      <ul className="space-y-2">
+    <ScrollArea className="h-[200px]">
+      <ul className="space-y-3">
         {filteredActions.map((action, index) => (
-          <li key={index} className="text-sm flex items-center animate-fade-in">
-            <span
-              className="mr-2"
-              role="img"
-              aria-label={`${action.country} flag`}
-              title={action.country}
-            >
-              {action.country ? getCountryFlag(action.country) : "🌎"}
-            </span>
-
-            <span className="text-xs text-gray-500 mr-2">
-              {new Date(action.created_at).toLocaleTimeString()}
-            </span>
-
-            <span className="font-medium">
-              {action.event_type === "visit" ? "visit" : "click"}
-            </span>
-            {action.link_id && (
-              <span className="ml-2">
-                on{" "}
-                <a
-                  href={action.link_id}
-                  className="text-blue-500 hover:underline"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {new URL(action.link_id).hostname}
-                </a>
-              </span>
-            )}
+          <li
+            key={index}
+            className="text-sm animate-fade-in bg-gray-50 p-2 rounded-md"
+          >
+            {formatAction(action)}
           </li>
         ))}
       </ul>

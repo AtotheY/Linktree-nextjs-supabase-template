@@ -26,6 +26,7 @@ import {
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import { Progress } from "@/components/ui/progress";
+import { getCountryFlag } from "@/utils/countryUtils";
 
 interface AnalyticsData {
   date_range: { start_date: string; end_date: string };
@@ -133,7 +134,7 @@ export default function Dashboard() {
           Update
         </button>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <Card className="bg-white shadow-lg">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-medium text-gray-500">
@@ -280,7 +281,12 @@ export default function Dashboard() {
                     key={index}
                     className="text-sm flex justify-between items-center"
                   >
-                    <span className="font-medium">{item.country}</span>
+                    <span className="font-medium flex items-center">
+                      <span className="mr-2">
+                        {getCountryFlag(item.country)}
+                      </span>
+                      {item.country}
+                    </span>
                     <span className="bg-green-100 text-green-800 px-2 py-1 rounded">
                       {item.total_views}
                     </span>
@@ -315,7 +321,7 @@ export default function Dashboard() {
             </ScrollArea>
           </CardContent>
         </Card>
-        <Card className="mt-6 bg-white shadow-lg">
+        <Card className="mt-6 bg-white shadow-lg col-span-full">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <div className="flex items-center">
               <CardTitle className="text-lg font-semibold text-gray-700 mr-2">
