@@ -16,7 +16,7 @@ A modern, customizable link-in-bio solution built with Next.js and Supabase.
 - 🔗 Easy to customize links and social media profiles
 - ⚡ Built with Next.js for fast performance
 - 📊 Analytics dashboard for tracking link clicks
-- 🌍 IP geolocation using ipapi
+- 🌍 Geolocation data using Vercel headers
 - 🛡️ Optional Redis-based rate limiting
 
 ## 🛠️ Tech Stack
@@ -112,9 +112,9 @@ For detailed setup instructions, see the [Getting Started](#-getting-started) se
 
    Replace the `pfp.png` file in the `public` directory with your own profile image. Ensure the image is named `pfp.png` to match the existing code.
 
-### IP Geolocation with ipapi
+### Geolocation with Vercel Headers
 
-This project uses ipapi to gather geolocation data for analytics purposes. The `checkIPReputation.ts` file contains the logic for making requests to the ipapi service. Make sure to set up your ipapi API key in the environment variables.
+This project uses Vercel headers to gather geolocation data for analytics purposes. The `geolocation.ts` file in the `utils` directory contains the logic for extracting location information from Vercel request headers. This method provides country, city, and region information without the need for external API calls.
 
 ### Redis-based Rate Limiting (Optional)
 
@@ -186,7 +186,6 @@ This project is set up for easy deployment on Vercel. To deploy your link site:
    - You may need to add additional variables depending on your configuration:
      - `REDIS_TOKEN`: Your Redis connection token (if using rate limiting)
      - `SKIP_RATE_LIMIT`: Set to "true" if not using Redis
-     - `IPAPI_API_KEY`: If you're using the ipapi service for IP geolocation (1000 free requests without an api key)
 
    Basic example with rate limiting:
    ```

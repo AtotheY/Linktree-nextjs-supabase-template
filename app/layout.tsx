@@ -19,6 +19,14 @@ export const metadata: Metadata = {
     "All my links, resources, and interesting things all in one place.",
   keywords: "Anthony Sistilli, portfolio, projects, links, web development",
   viewport: "width=device-width, initial-scale=1",
+  icons: {
+    icon: [
+      {
+        url: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👋</text></svg>",
+        type: "image/svg+xml",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
