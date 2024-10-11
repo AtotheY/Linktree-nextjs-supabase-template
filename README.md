@@ -6,7 +6,7 @@ A modern, customizable link-in-bio solution built with Next.js and Supabase.
 [![GitHub Repo](https://img.shields.io/badge/github-repo-blue?style=for-the-badge)](https://github.com/AtotheY/Linktree-nextjs-supabase-template)
 
 <p align="center">
-  <img src="https://i.imgur.com/lCwM28R.png" alt="Linktree Preview" width="300"/>
+  <img src="https://i.imgur.com/ovphkOl.png" alt="Linktree Preview" width="300"/>
   <img src="https://i.imgur.com/JG8Orin.png" alt="Dashboard Preview" width="450"/>
 </p>
 
