@@ -29,7 +29,7 @@ export const items: LinkItem[] = [
   {
     type: "youtube",
     title: "Latest Youtube Video",
-    youtubeId: "lO3Fvz06lzc?",
+    youtubeId: "hha69Xaud08?",
   },
   {
     type: "category",
@@ -50,6 +50,11 @@ export const items: LinkItem[] = [
     type: "link",
     title: "Startup notes & coding resources (mind map)",
     url: "https://map.sistilli.dev/",
+  },
+  {
+    type: "link",
+    title: "Linktree clone (NextJS & Supabase)",
+    url: "https://github.com/AtotheY/Linktree-nextjs-supabase-template",
   },
   {
     type: "link",
