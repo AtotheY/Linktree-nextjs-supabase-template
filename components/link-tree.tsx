@@ -7,6 +7,7 @@ import {
   Mail,
   Youtube,
   Cloud,
+  Github, // Add this import
 } from "lucide-react";
 import Image from "next/image";
 import {
@@ -265,6 +266,8 @@ function getSocialIcon(platform: string) {
       return <Instagram className="w-6 h-6" />;
     case "mail":
       return <Mail className="w-6 h-6" />;
+    case "github": // Add this case
+      return <Github className="w-6 h-6" />;
     case "tiktok":
       return (
         <svg

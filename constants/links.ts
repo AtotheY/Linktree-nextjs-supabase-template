@@ -18,6 +18,11 @@ export const socialLinks = [
   },
   { platform: "Discord", url: "https://discord.gg/JNc6uPUqUU" },
   { platform: "Instagram", url: "https://instagram.com/asistilli" },
+  // Add the new GitHub link
+  {
+    platform: "GitHub",
+    url: "https://github.com/AtotheY/Linktree-nextjs-supabase-template",
+  },
 ];
 
 export const items: LinkItem[] = [
