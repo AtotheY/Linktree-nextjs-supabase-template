@@ -4,7 +4,8 @@ export const githubRepoName = "https://neonardo1702.github.io/Neonardo1702";
 
 export const imageBaseUrl =
   process.env.NODE_ENV === "production" ? "" : `${githubRepoName}`;
-export const name = "@realneowm";
+export const codename = "@neowm";
+export const name = "Watcharawut Neo Masawat";
 export const description = "Space Engineer & Mission Operator";
 
 export const socialLinks = [

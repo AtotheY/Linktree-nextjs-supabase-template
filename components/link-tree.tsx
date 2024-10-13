@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import {
+  codename,
   description,
   imageBaseUrl,
   items,
@@ -184,7 +185,8 @@ export function LinkTree() {
             alt={name}
             className="w-24 h-24 rounded-full mx-auto mb-4 border-2 border-red-200 shadow-sm"
           />
-          <h1 className="text-2xl font-bold text-gray-800">{name}</h1>
+          <h1 className="text-2xl font-bold text-gray-800">{codename}</h1>
+          <h1 className="text-xl font-bold text-gray-800">{name}</h1>
           <p className="text-gray-600">{description}</p>
         </div>
 
