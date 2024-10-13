@@ -14,10 +14,10 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Anthony Sistilli's Links",
+  title: "Watcharawut Masawat's Links",
   description:
     "All my links, resources, and interesting things all in one place.",
-  keywords: "Anthony Sistilli, portfolio, projects, links, web development",
+  keywords: "Watcharawut Masawat, Neo WM, Neo, portfolio, projects, links, web development, space, engineering",
   viewport: "width=device-width, initial-scale=1",
   icons: {
     icon: [
