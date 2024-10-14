@@ -43,6 +43,11 @@ export const items: LinkItem[] = [
   { type: "category", title: "Resources" },
   {
     type: "link",
+    title: "Learn to code with Codedex!",
+    url: "https://www.codedex.io/?utm_source=anthonysistili&utm_medium=creator-collab&utm_campaign=2024-october",
+  },
+  {
+    type: "link",
     title: "Buy me a coffee :)",
     url: "http://buymeacoffee.com/anthonysistilli",
   },
