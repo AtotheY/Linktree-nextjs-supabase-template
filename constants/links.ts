@@ -5,7 +5,7 @@ export const githubRepoName = "AtotheY.github.io";
 export const imageBaseUrl =
   process.env.NODE_ENV === "production" ? "" : `/${githubRepoName}`;
 export const name = "@anthonysistilli";
-export const description = "Tech founder & senior software engineer";
+export const description = "Founder @ Hyrd.dev & Sr SWE";
 
 export const socialLinks = [
   { platform: "LinkedIn", url: "https://www.linkedin.com/in/asistilli/" },
