@@ -29,7 +29,7 @@ export const items: LinkItem[] = [
   {
     type: "youtube",
     title: "Latest Youtube Video",
-    youtubeId: "mL5FM8sktz4?",
+    youtubeId: "ufmYccZ5E8M",
   },
   {
     type: "category",
