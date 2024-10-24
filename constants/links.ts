@@ -52,6 +52,8 @@ export const items: LinkItem[] = [
       "Try Scrimba - learning to code from the future (an extra 20% off using my link)",
     url: "https://v2.scrimba.com?via=AnthonySistilli",
   },
+  { type: "category", title: "My Stuff" },
+
   {
     type: "link",
     title: "Buy me a coffee :)",
