@@ -43,11 +43,6 @@ export const items: LinkItem[] = [
   { type: "category", title: "Resources" },
   {
     type: "link",
-    title: "Learn to code with Codedex!",
-    url: "https://www.codedex.io/?utm_source=anthonysistili&utm_medium=creator-collab&utm_campaign=2024-october",
-  },
-  {
-    type: "link",
     title:
       "Try Scrimba - learning to code from the future (an extra 20% off using my link)",
     url: "https://v2.scrimba.com?via=AnthonySistilli",
