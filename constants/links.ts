@@ -33,12 +33,12 @@ export const items: LinkItem[] = [
   },
   {
     type: "category",
-    title: "Join Hyrd's waitlist - My company",
+    title: "Join Hyrd's beta - Bypass ATS & land coding interviews",
   },
   {
     type: "link",
-    title: "Hyrd.dev - Find a tech job in minutes, not months",
-    url: "https://hyrd.dev",
+    title: "Hyrd's beta - Bypass ATS and land a coding interviews",
+    url: "https://hyrd.dev ",
   },
   { type: "category", title: "Resources" },
   {
