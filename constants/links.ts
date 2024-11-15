@@ -29,7 +29,18 @@ export const items: LinkItem[] = [
   {
     type: "youtube",
     title: "Latest Youtube Video",
-    youtubeId: "ufmYccZ5E8M",
+    youtubeId: "ib-Nlg9qWBw",
+  },
+  { type: "category", title: "Try Rider & WebStorm by JetBrains" },
+  {
+    type: "link",
+    title: "Try WebStorm - Javascript & Typescript IDE",
+    url: "https://jb.gg/get_webstorm_now",
+  },
+  {
+    type: "link",
+    title: "Try Rider - For game development & more",
+    url: "https://jb.gg/get_rider_now",
   },
   {
     type: "category",
