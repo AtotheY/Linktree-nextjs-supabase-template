@@ -1,6 +1,5 @@
 import { createServersideClient } from "@/utils/supabase/server";
 import { NextResponse } from "next/server";
-import { rateLimit } from "@/utils/rateLimit";
 import { headers } from "next/headers";
 
 // GET request to retrieve analytics data
@@ -43,20 +42,6 @@ export async function POST(request: Request) {
   const region = headersList.get("x-vercel-ip-country-region") || null;
 
   try {
-    // Check if rate limiting should be skipped
-    const skipRateLimit = process.env.SKIP_RATE_LIMIT === "true";
-
-    // Rate limiting (only if not skipped)
-    if (!skipRateLimit) {
-      const isRateLimited = await rateLimit(ip);
-      if (isRateLimited) {
-        return NextResponse.json(
-          { error: "Too many requests" },
-          { status: 429 }
-        );
-      }
-    }
-
     const { event_type, link_id, source } = await request.json();
 
     const supabase = createServersideClient();
