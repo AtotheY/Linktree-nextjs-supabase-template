@@ -31,25 +31,11 @@ export const items: LinkItem[] = [
     title: "Latest Youtube Video",
     youtubeId: "ib-Nlg9qWBw",
   },
-  { type: "category", title: "Try Rider & WebStorm by JetBrains" },
+  { type: "category", title: "I coded this, try it out :)" },
   {
     type: "link",
-    title: "Try WebStorm - Javascript & Typescript IDE",
-    url: "https://jb.gg/get_webstorm_now",
-  },
-  {
-    type: "link",
-    title: "Try Rider - For game development & more",
-    url: "https://jb.gg/get_rider_now",
-  },
-  {
-    type: "category",
-    title: "Join Hyrd's beta - Bypass ATS & land coding interviews",
-  },
-  {
-    type: "link",
-    title: "Hyrd's beta - Bypass ATS and land a coding interviews",
-    url: "https://hyrd.dev ",
+    title: "Pylon - Canvas tool to build and deploy AI applications",
+    url: "https://app.modelflowai.com/",
   },
   { type: "category", title: "Resources" },
   {
