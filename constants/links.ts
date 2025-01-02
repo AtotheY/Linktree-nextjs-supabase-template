@@ -31,11 +31,16 @@ export const items: LinkItem[] = [
     title: "Latest Youtube Video",
     youtubeId: "ib-Nlg9qWBw",
   },
-  { type: "category", title: "I coded this, try it out :)" },
+  { type: "category", title: "My projects, try em out :)" },
   {
     type: "link",
-    title: "Pylon - Canvas tool to build and deploy AI applications",
-    url: "https://app.modelflowai.com/",
+    title: "DailyShip.dev - Build a daily coding habit",
+    url: "https://dailyship.dev/",
+  },
+  {
+    type: "link",
+    title: "Hyrd - Generate a new ATS resume for each job you apply to",
+    url: "https://hyrd.dev/",
   },
   { type: "category", title: "Resources" },
   {
