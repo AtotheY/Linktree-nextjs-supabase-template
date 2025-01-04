@@ -34,6 +34,11 @@ export const items: LinkItem[] = [
   { type: "category", title: "My projects, try em out :)" },
   {
     type: "link",
+    title: "Spinai - easy typescript framework to create ai agents that I made",
+    url: "https://docs.spinai.dev/",
+  },
+  {
+    type: "link",
     title: "DailyShip.dev - Build a daily coding habit",
     url: "https://dailyship.dev/",
   },
