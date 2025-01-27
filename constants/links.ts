@@ -29,38 +29,20 @@ export const items: LinkItem[] = [
   {
     type: "youtube",
     title: "Latest Youtube Video",
-    youtubeId: "ib-Nlg9qWBw",
+    youtubeId: "fD0E57QYSPk",
   },
-  { type: "category", title: "My projects, try em out :)" },
+  { type: "category", title: "My projects / companies" },
   {
     type: "link",
-    title: "Spinai - easy typescript framework to create ai agents that I made",
+    title: "Spinai.dev - Observable AI Agents ‍made easy",
     url: "https://docs.spinai.dev/",
-  },
-  {
-    type: "link",
-    title: "DailyShip.dev - Build a daily coding habit",
-    url: "https://dailyship.dev/",
   },
   {
     type: "link",
     title: "Hyrd - Generate a new ATS resume for each job you apply to",
     url: "https://hyrd.dev/",
   },
-  { type: "category", title: "Resources" },
-  {
-    type: "link",
-    title:
-      "Try Scrimba - learning to code from the future (an extra 20% off using my link)",
-    url: "https://v2.scrimba.com?via=AnthonySistilli",
-  },
-  {
-    type: "link",
-    title: "Get a FREE career consultation with a TripleTen career advisor",
-    url: "https://tripleten.com/special/free-career-consultation/?utm_channel=influencers&utm_source=influencers&utm_medium=instagram&utm_campaign=influencers_anthonysistilli&utm_content=reels",
-  },
   { type: "category", title: "My Stuff" },
-
   {
     type: "link",
     title: "Buy me a coffee :)",
@@ -80,5 +62,22 @@ export const items: LinkItem[] = [
     type: "link",
     title: "My saas landing page boilerplate on Github",
     url: "https://github.com/AtotheY/saas-landingpage",
+  },
+  { type: "category", title: "Resources" },
+  {
+    type: "link",
+    title: "Software Engineer's Resume Checklist",
+    url: "https://map.sistilli.dev/public/coding/Software+Engineer's+Resume+Checklist",
+  },
+  {
+    type: "link",
+    title:
+      "Try Scrimba - learning to code from the future (an extra 20% off using my link)",
+    url: "https://v2.scrimba.com?via=AnthonySistilli",
+  },
+  {
+    type: "link",
+    title: "Get a FREE career consultation with a TripleTen career advisor",
+    url: "https://tripleten.com/special/free-career-consultation/?utm_channel=influencers&utm_source=influencers&utm_medium=instagram&utm_campaign=influencers_anthonysistilli&utm_content=reels",
   },
 ];
