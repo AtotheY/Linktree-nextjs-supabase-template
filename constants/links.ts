@@ -34,6 +34,11 @@ export const items: LinkItem[] = [
   { type: "category", title: "My projects / companies" },
   {
     type: "link",
+    title: "Github code reviewer made with SpinAI",
+    url: "https://github.com/Fallomai/spinai/tree/main/templates/github-code-review-agent",
+  },
+  {
+    type: "link",
     title: "Spinai.dev - Observable AI Agents ‍made easy",
     url: "https://docs.spinai.dev/",
   },
