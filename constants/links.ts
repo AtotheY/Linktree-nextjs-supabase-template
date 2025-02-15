@@ -18,10 +18,9 @@ export const socialLinks = [
   },
   { platform: "Discord", url: "https://discord.gg/JNc6uPUqUU" },
   { platform: "Instagram", url: "https://instagram.com/asistilli" },
-  // Add the new GitHub link
   {
     platform: "GitHub",
-    url: "https://github.com/AtotheY/Linktree-nextjs-supabase-template",
+    url: "https://github.com/AtotheY",
   },
 ];
 
@@ -35,7 +34,7 @@ export const items: LinkItem[] = [
   {
     type: "link",
     title: "Github code reviewer made with SpinAI",
-    url: "https://github.com/Fallomai/spinai/tree/main/templates/github-code-review-agent",
+    url: "https://github.com/Fallomai/spinai/tree/main/templates/mintlify-docs-updater",
   },
   {
     type: "link",
