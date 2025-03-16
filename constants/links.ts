@@ -33,8 +33,8 @@ export const items: LinkItem[] = [
   { type: "category", title: "My projects / companies" },
   {
     type: "link",
-    title: "Github code reviewer made with SpinAI",
-    url: "https://github.com/Fallomai/spinai/tree/main/templates/mintlify-docs-updater",
+    title: "Github code reviewer made with SpinAI.dev",
+    url: "https://github.com/Fallomai/spinai/tree/main/templates/github-code-review-agent",
   },
   {
     type: "link",
@@ -78,10 +78,5 @@ export const items: LinkItem[] = [
     title:
       "Try Scrimba - learning to code from the future (an extra 20% off using my link)",
     url: "https://v2.scrimba.com?via=AnthonySistilli",
-  },
-  {
-    type: "link",
-    title: "Get a FREE career consultation with a TripleTen career advisor",
-    url: "https://tripleten.com/special/free-career-consultation/?utm_channel=influencers&utm_source=influencers&utm_medium=instagram&utm_campaign=influencers_anthonysistilli&utm_content=reels",
   },
 ];
