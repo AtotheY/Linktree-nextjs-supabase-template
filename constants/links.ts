@@ -26,6 +26,11 @@ export const socialLinks = [
 
 export const items: LinkItem[] = [
   {
+    type: "link",
+    title: "Try the PLAUD NotePin!",
+    url: "https://spn.so/iyi1yt99",
+  },
+  {
     type: "youtube",
     title: "Latest Youtube Video",
     youtubeId: "lMFQj_ilzJA",
@@ -38,7 +43,7 @@ export const items: LinkItem[] = [
   },
   {
     type: "link",
-    title: "Spinai.dev - Observable AI Agents ‍made easy",
+    title: "SpinAI.dev - Observable AI Agents ‍made easy",
     url: "https://docs.spinai.dev/",
   },
   {
