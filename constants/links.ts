@@ -26,32 +26,22 @@ export const socialLinks = [
 
 export const items: LinkItem[] = [
   {
-    type: "link",
-    title: "Try the PLAUD NotePin!",
-    url: "https://spn.so/iyi1yt99",
-  },
-  {
     type: "youtube",
     title: "Latest Youtube Video",
-    youtubeId: "lMFQj_ilzJA",
+    youtubeId: "gOAcuS68HqA",
   },
-  { type: "category", title: "My projects / companies" },
-  {
-    type: "link",
-    title: "Github code reviewer made with SpinAI.dev",
-    url: "https://github.com/Fallomai/spinai/tree/main/templates/github-code-review-agent",
-  },
-  {
-    type: "link",
-    title: "SpinAI.dev - Observable AI Agents ‍made easy",
-    url: "https://docs.spinai.dev/",
-  },
-  {
-    type: "link",
-    title: "Hyrd - Generate a new ATS resume for each job you apply to",
-    url: "https://hyrd.dev/",
-  },
+  // { type: "category", title: "My projects / companies" },
+  // {
+  //   type: "link",
+  //   title: "Hyrd - Generate a new ATS resume for each job you apply to",
+  //   url: "https://hyrd.dev/",
+  // },
   { type: "category", title: "My Stuff" },
+  {
+    type: "link",
+    title: "Essays, startup notes, & coding resources",
+    url: "https://map.sistilli.dev/",
+  },
   {
     type: "link",
     title: "Buy me a coffee :)",
@@ -59,18 +49,8 @@ export const items: LinkItem[] = [
   },
   {
     type: "link",
-    title: "Startup notes & coding resources (mind map)",
-    url: "https://map.sistilli.dev/",
-  },
-  {
-    type: "link",
     title: "Linktree clone (NextJS & Supabase)",
     url: "https://github.com/AtotheY/Linktree-nextjs-supabase-template",
-  },
-  {
-    type: "link",
-    title: "My saas landing page boilerplate on Github",
-    url: "https://github.com/AtotheY/saas-landingpage",
   },
   { type: "category", title: "Resources" },
   {
