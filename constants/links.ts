@@ -30,12 +30,12 @@ export const items: LinkItem[] = [
     title: "Latest Youtube Video",
     youtubeId: "gOAcuS68HqA",
   },
-  // { type: "category", title: "My projects / companies" },
-  // {
-  //   type: "link",
-  //   title: "Hyrd - Generate a new ATS resume for each job you apply to",
-  //   url: "https://hyrd.dev/",
-  // },
+  { type: "category", title: "My startup" },
+  {
+    type: "link",
+    title: "Fallom - AI powered Resume Screening for Devs ",
+    url: "https://fallom.dev/",
+  },
   { type: "category", title: "My Stuff" },
   {
     type: "link",
