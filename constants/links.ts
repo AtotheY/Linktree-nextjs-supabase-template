@@ -33,7 +33,7 @@ export const items: LinkItem[] = [
   { type: "category", title: "My startup" },
   {
     type: "link",
-    title: "Fallom - AI powered Resume Screening for Devs ",
+    title: "Fallom - Real world interviews for devs",
     url: "https://fallom.dev/",
   },
   { type: "category", title: "My Stuff" },
